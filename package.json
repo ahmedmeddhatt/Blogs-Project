@@ -8,6 +8,9 @@
     "start": "nodemon app.js",
     "build": "webpack"
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
