@@ -5,7 +5,7 @@ const multer  = require('multer')
 const connection=require('./config/config.js')
 const blogRoutes=require('./modules/blogs/routes/blog.routes.js')
 const mails=require('./mails/mail.index.js')
-const userRoutes=require('./modules/users/routes/user.routes.JS')
+const userRoutes=require('./modules/users/routes/user.routes.js')
 require('dotenv').config()
 
 const app= express()
