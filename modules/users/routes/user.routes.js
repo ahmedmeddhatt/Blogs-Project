@@ -3,12 +3,13 @@ const {allUsers,addUsers,upUsers,delUsers,login,verifyUser}=require('../controll
 const validator=require('../../../validator/validator.js')
 const {addNewUser,signInJoi}=require('../joi/user.joi.js')
 const auth=require("../../../config/auth.js")
+const auth2=require('../../../config/auth2.js')
 const { GET_ALL_USER,DELETE_USER } = require('../../../endPoints.js')
 
-app.get("/allUsers",auth(GET_ALL_USER),allUsers)
+app.get("/allUsers",auth2(GET_ALL_USER),allUsers)
 app.post("/addUsers",validator(addNewUser),addUsers)
 app.put("/upUsers/:id",upUsers)
-app.delete("/delUsers/:id",auth(DELETE_USER),delUsers)
+app.delete("/delUsers/:id",auth2(DELETE_USER),delUsers)
 app.post("/login",validator(signInJoi),login)
 app.get("/verifyUser",verifyUser)
 module.exports=app

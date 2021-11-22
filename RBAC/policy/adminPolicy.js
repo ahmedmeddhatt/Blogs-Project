@@ -1,3 +1,3 @@
-const {DELETE_USER}=require('../../endPoints.js')
+const {GET_ALL_USER,DELETE_USER}=require('../../endPoints.js')
 
-module.exports=[DELETE_USER]
+module.exports=[GET_ALL_USER,DELETE_USER]

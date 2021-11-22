@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 const allUsers=async(req,res)=>{
     let{page,size}=req.query;
     if(!page){page=1};
-    if(!size){size=2};
+    if(!size){size=5};
     const limit=parseInt(size);
     const skip=(page-1)*size;
     const totalResult=await user.count()
@@ -23,9 +23,9 @@ const addUsers=async(req,res)=>{
     try{
         const checkUser=await user.findOne({email:email})
         if(checkUser){
-            res.status(StatusCodes.BAD_REQUEST).json({message:"Email Alredy Registered"})       }else{
+            res.status(StatusCodes.BAD_REQUEST).json({message:"Email Alredy Registered"})      
+         }else{
 
-                
         const newUser=new user({uName:uName,email:email,pass:`${pass}`,cpass:`${cpass}`,phone:phone,role:role,location:location,isAuth:false})
         if(pass===cpass){
             await newUser.save()

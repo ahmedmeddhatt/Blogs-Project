@@ -29,14 +29,12 @@ const storage=multer.diskStorage({
 const upload=multer({storage:storage})
 
 app.post("/image",upload.single("IMAGE"),(req,res)=>{
-    console.log(req.file);
+    console.log(req.file ,"req.file");
     res.send("okay")
 })
 
 app.get("/",(req,res)=>{
-    cron.schedule("* * */1 * * *", () => {
-        console.log("running a task every one minute");
-      });
+    
       res.send("donee")
 })
 

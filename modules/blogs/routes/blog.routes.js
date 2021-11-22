@@ -3,13 +3,14 @@ const {allBlogs,addBlogs,upBlogs,delBlogs}=require('../controller/blog.controlle
 const validator=require('../../../validator/validator.js')
 const {addNewBlog}=require('../joi/blog.joi.js')
 const auth=require("../../../config/auth.js")
+const auth2=require('../../../config/auth2.js')
 const { GET_ALL_USER,DELETE_USER,ADD_BLOG } = require('../../../endPoints.js')
 const path=require('path')
 const multer  = require('multer')
 
 function fileFilter (req, file, cb) {
 if(file.mimetype=="image/jpeg"||file.mimetype=="image/png"){
-    cb(null, true)
+    cb(null, true) 
 }else{    
     cb(null, false)
 }
@@ -27,7 +28,7 @@ const storage=multer.diskStorage({
 const upload=multer({storage:storage,fileFilter:fileFilter})
 
 app.get("/allBlogs",allBlogs)
-app.post("/addBlogs",validator(addNewBlog),upload.single("img"),auth(ADD_BLOG),addBlogs)
+app.post("/addBlogs",validator(addNewBlog),upload.single("img"),auth2(ADD_BLOG),addBlogs)
 app.put("/upBlogs/:id",upBlogs)
 app.delete("/delBlogs/:id",delBlogs)
 
