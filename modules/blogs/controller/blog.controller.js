@@ -1,7 +1,6 @@
 const userModel = require('../../users/model/user.model.js')
 const blog=require('../model/blog.model.js')
 
-
 const allBlogs=async(req,res)=>{
     let{page,size}=req.query
     if(!page){page=1};
@@ -15,15 +14,15 @@ const allBlogs=async(req,res)=>{
 }
 
 const addBlogs=async(req,res)=>{
-    console.log("------------",req.body);
+    console.log("----body---",req.body);
     console.log("--path----",req.file.path);
-    console.log("----user-----",req.user);
+    console.log("----user---",req.user);
     let {title,desc}=req.body
     if(req.file== undefined){
         res.send("FILE IS NOT SUPPORTED")
     }else{
-        console.log(req.file.mimetype);
-        await blog.insertMany({title,desc,blogImgUrl:req.file.path}).then(()=>{
+        console.log("req.file.mimetype",req.file.mimetype);
+        await blog.insertMany({title,desc,blogImgUrl:req.file.path,userId:req.user._id}).then(()=>{
             res.send("added")
         }).catch((err) =>{
                 res.json({message:"erorr",err})})
